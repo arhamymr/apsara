@@ -3,10 +3,11 @@ import React from 'react';
 import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
+import { Colors } from '@/constants/colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { Camera, User } from 'lucide-react-native';
+import { ThemedText } from '@/components/ThemedText';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -25,19 +26,56 @@ export default function TabLayout() {
           },
           default: {},
         }),
-      }}>
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="hiragana"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Hiragana',
+          tabBarIcon: ({ color }) => (
+            <ThemedText
+              style={{
+                color,
+              }}
+              type="subtitle"
+            >
+              あ
+            </ThemedText>
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="katakana"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Katakana',
+          tabBarIcon: ({ color }) => (
+            <ThemedText
+              style={{
+                color,
+              }}
+              type="subtitle"
+            >
+              ア
+            </ThemedText>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="kanji"
+        options={{
+          title: 'Kanji',
+          tabBarIcon: ({ color }) => {
+            return (
+              <ThemedText
+                style={{
+                  color,
+                }}
+                type="subtitle"
+              >
+                漢
+              </ThemedText>
+            );
+          },
         }}
       />
     </Tabs>
